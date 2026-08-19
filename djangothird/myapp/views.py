@@ -1,5 +1,6 @@
 from django.shortcuts import render,redirect
 from django.http import HttpResponse
+from . models import Students
 
 
 def raja(request):
@@ -61,3 +62,20 @@ def about(request):
                       }
                      ]
     return render(request,'myapp/about.html',{"students":student_details})
+
+
+def addstudent(request):
+    if(request.method=="POST"):
+        name=request.POST['name']
+        age=request.POST['age']
+        course=request.POST['course']
+        print(name,age,course)
+    
+    Students.objects.create(
+        name=name,
+        age=age,
+        course=course
+    )
+    
+    
+    return render(request,'myapp/studentoperation.html')
