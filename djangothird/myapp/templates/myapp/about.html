@@ -1,0 +1,52 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="{% static 'css/about.css' %}">
+</head>
+<body>
+    <nav>
+        <a href="/home">Home</a>
+        <a href="/about"> About</a>
+        <a href="/index">Index</a>
+        <a href="/new">New</a>
+        <a href="/">Raja</a>
+    </nav>
+    <h1>This is the About Page</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Student ID</th>
+                <th>Name</th>
+                <th>Age</th>
+                <th>Course</th>
+                <th>Catagory</th>
+            </tr>
+        </thead>
+        <tbody>
+               {% for student in students %}
+               <tr>
+                <td>{{student.id}}</td>
+                <td>{{student.name}}</td>
+                <td>{{student.age}}</td>
+                <td>{{student.course}}</td>
+                <td>
+            {% if student.age >= 18 %}
+                Adult
+            {% elif student.age >= 13 %}
+                Teenager
+            {% else %}
+                Child
+            {% endif %}
+        </td>
+                 
+            
+               </tr>
+               {%endfor%}
+        </tbody>
+    </table>
+</body>
+</html>

@@ -1,0 +1,48 @@
+{%load static%}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=<device-width>, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="{% static 'css/about.css' %}">
+</head>
+<body>
+    <nav>
+        <a href="/about">About</a>
+        <a href="/index">Index</a>
+        <a href="/">Home</a>
+    </nav>
+    <h1>This is About Page</h1>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Age</th>
+                <th>Course</th>
+                <th>Catagory</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for i in students%}
+            <tr>
+                <td>{{i.id}}</td>
+                <td>{{i.name}}</td>
+                <td>{{i.age}}</td>
+                <td>{{i.course}}</td>
+                <td>
+                    {% if i.age >= 18 %}
+                    Adult
+                    {% elif i.age >= 13 %}
+                    Teenager
+                    {% else %}
+                    Child
+                    {%endif%}
+                </td>
+            </tr>{%endfor%}
+            
+        </tbody>
+    </table>
+</body>
+</html>
