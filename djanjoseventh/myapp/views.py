@@ -114,6 +114,9 @@ def deleteview(request,id):
         },status=status.HTTP_200_OK)
         
         
+        
+        #Done da
+        
             
     
     
