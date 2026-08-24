@@ -1,0 +1,35 @@
+{%load static%}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="{% static 'css/index.css' %}">
+</head>
+<body>
+    <h1>This is Index Page</h1>
+      <nav>
+        <a href="/">Home</a>
+        <a href="/index">Index</a>
+        <a href="/about">About</a>
+        <a href="/table">Table</a>
+         <a href="/student">Student</a>
+    </nav>
+    <br><br>
+    <form method="POST">
+        {% csrf_token %}
+        
+        <label>UserName</label>
+        <input type="text" required name="username">
+        <label >Password</label>
+        <input type="password" required name="password">
+        <button type="submit">Submit</button>
+    </form>
+    {%if error%}
+    <p>{{error}}</p>
+    {% endif %}
+
+    
+</body>
+</html>

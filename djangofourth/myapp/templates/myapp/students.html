@@ -1,0 +1,53 @@
+{%load static%}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="{% static 'css/studentoperation.css' %}">
+    
+</head>
+<body>
+     <nav>
+        <a href="/about">About</a>
+        <a href="/index">Index</a>
+        <a href="/">Home</a>
+        <a href="/students">Students</a>
+    </nav>
+    <h1>This is Student Operations</h1>
+    <form method="POST">
+        {%csrf_token%}
+        <label>Name : </label>
+        <input type="text" required name="name" >
+        <label>Age : </label>
+        <input type="number" required name="age">
+        <label>Course : </label>
+        <input type="text" required name="course">
+        <label>Details : </label>
+        <input type="text" required name="details">
+        <button type="submit">Submit</button>
+    </form>
+    
+    <table>
+        <thead>
+            <tr>
+                <th>NAME</th>
+                <th>AGE</th>
+                <th>COURSE</th>
+                <th>DETAILS</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for i in students%}
+            <tr>
+                <td>{{i.name}}</td>
+                <td>{{i.age}}</td>
+                <td>{{i.course}}</td>
+                <td>{{i.details}}</td>
+            </tr>
+            {%endfor%}
+        </tbody>
+    </table>
+</body>
+</html>

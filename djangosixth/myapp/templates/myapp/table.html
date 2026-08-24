@@ -1,0 +1,54 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    
+    
+</head>
+<body>
+    <h1>This is Table Page</h1>
+    <nav>
+        <a href="/">Home</a>
+        <a href="/index">Index</a>
+        <a href="/about">About</a>
+        <a href="/table">Table</a>
+         <a href="/student">Student</a>
+
+    </nav>
+    <table>
+        
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Age</th>
+                <th>Cagegory</th>
+            </tr>
+
+        </thead>
+        <tbody>
+            {% for i in students%}
+            <tr>
+                <td>{{i.id}}</td>
+                <td>{{i.name}}</td>
+                <td>{{i.age}}</td>
+                <td>
+                    {% if i.age >= 18 %}
+                    major
+                    {% elif i.age >= 13 %}
+                    minor
+                    {%else%}
+                    kids
+                </td>
+                {%endif%}
+            </tr>
+            {%endfor%}
+
+        </tbody>
+    </table>
+    
+</body>
+</html>

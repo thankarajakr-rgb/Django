@@ -1,5 +1,7 @@
 from django.shortcuts import render,redirect
 from django.http import HttpResponse
+from .models import Gold
+
 
 # Create your views here.
 
@@ -49,4 +51,27 @@ def about(request):
     return render (request,'myapp/about.html',{
         "students":student_details
     })
+    
+
+def addstudents(request):
+    if(request.method=="POST"):
+        name=request.POST['name']
+        age=request.POST['age']
+        course=request.POST['course']
+        details=request.POST['details']
+        print(name,age,course,details)
+        
+        Gold.objects.create(
+            name=name,
+            age=age,
+            course=course,
+            details=details
+        )
+        students=Gold.objects.all()
+        return render(request,'myapp/students.html',{"students":students})
+        
+    students=Gold.objects.all()
+    
+    return render(request,'myapp/students.html',{"students":students})
+
 

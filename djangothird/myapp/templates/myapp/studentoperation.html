@@ -28,5 +28,23 @@
             
 
         </form>
+        <table>
+            <thead>
+                
+                <th>Name</th>
+                <th>Age</th>
+                <th>Course</th>
+            </thead>
+            <tbody>
+                {% for i in students%}
+                <tr>
+                    <td>{{i.name}}</td>
+                    <td>{{i.age}}</td>
+                    <td>{{i.course}}</td>
+                </tr>
+            </tbody>
+            {%endfor%}
+        </table>
+       
 </body>
 </html>

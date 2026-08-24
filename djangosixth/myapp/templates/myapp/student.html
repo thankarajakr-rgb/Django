@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=\, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Student DETAILs</h1>
+    <nav>
+        <a href="/">Home</a>
+        <a href="/index">Index</a>
+        <a href="/about">About</a>
+        <a href="/table">Table</a>
+        <a href="/student">Student</a>
+
+    </nav>
+
+    <form method="POST">
+        {%csrf_token%}
+        <label>Name</label>
+        <input type="text" required name="name">
+        <label >Age</label>
+        <input type="number" required name="age">
+        <label>Course</label>
+        <input type="text" required name="course">
+        <button type="submit" >Submit</button>
+    </form>
+    <table>
+        
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Age</th>
+                <th>Course</th>
+            </tr>
+
+        </thead>
+        <tbody>
+            {% for i in student%}
+            <tr>
+                <td>{{i.id}}</td>
+                <td>{{i.name}}</td>
+                <td>{{i.age}}</td>
+                <td>{{i.course}}</td>
+                <td>
+                    <a href="/update/{{i.id}}">Edit</a>
+                    <a href="/delete/{{i.id}}">DELETE</a>
+                
+                    
+                </td>
+               
+                
+            </tr>
+            {%endfor%}
+
+        </tbody>
+    </table>
+
+</body>
+</html>

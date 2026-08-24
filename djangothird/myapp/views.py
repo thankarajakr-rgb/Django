@@ -71,11 +71,14 @@ def addstudent(request):
         course=request.POST['course']
         print(name,age,course)
     
-    Students.objects.create(
-        name=name,
-        age=age,
-        course=course
-    )
+        Students.objects.create(
+               name=name,
+                age=age,
+               course=course
+         )
+        students=Students.objects.all()
+        return render(request,'myapp/studentoperation.html',{"students":students})
+    students=Students.objects.all()
+  
     
-    
-    return render(request,'myapp/studentoperation.html')
+    return render(request,'myapp/studentoperation.html',{"students":students})
