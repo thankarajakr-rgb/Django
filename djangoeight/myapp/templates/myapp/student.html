@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <title>Students</title>
+
+</head>
+
+<body>
+
+<nav>
+
+    <a href="/">Home</a>
+    <a href="/index/">Index</a>
+    <a href="/about/">About</a>
+    <a href="/table/">Table</a>
+    <a href="/student/">Students</a>
+    <a href="/course/">Courses</a>
+
+</nav>
+
+<h1>Student Details</h1>
+<h2>Add Student</h2>
+<form method="POST">
+{% csrf_token %}
+<label>Name</label>
+<input type="text" name="name" required>
+<br><br>
+<label>Age</label>
+ <input type="number" name="age" required >
+<br><br>
+<label>Course</label>
+<select name="course" required>
+<option value=""> Select Course </option>
+ {% for course in courses %}
+<option value="{{ course.id }}">{{ course.course_name }}</option>
+{% endfor %}
+</select>
+<br><br>
+<button type="submit"> Submit</button>
+</form>
+<hr>
+<h2>Student List</h2>
+<table border="1">
+<thead>
+<tr>
+ <th>ID</th>
+ <th>Name</th>
+<th>Age</th>
+<th>Course</th>
+<th>Edit</th>
+<th>Delete</th>
+</tr>
+</thead>
+<tbody>
+    {% for i in students %}
+<tr>
+<td>{{ i.id }}</td>
+<td>{{ i.name }}</td>
+<td>{{ i.age }}</td>
+<td>{{ i.course.course_name }}</td>
+<td><a href="/student/update/{{ i.id }}/">Edit</a></td>
+<td><a href="/student/delete/{{ i.id }}/"> Delete </a> </td>
+</tr>
+{% empty %}
+<tr><td colspan="6">No students found</td> </tr>
+{% endfor %}
+</tbody>
+</table>
+</body>
+</html>

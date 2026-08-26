@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <nav>
+        <a href="/">HOME</a>
+        <a href="/about">About</a>
+        <a href="/student">Student</a>
+        <a href="/index">Index</a>
+
+    </nav>
+    <h1>This is Index Page</h1>
+    <form method="POST">
+        {% csrf_token %}
+        <label>UserName</label>
+        <input type="text" required name="username">
+         <label>Password</label>
+        <input type="number" required name="password">
+        <button type="submit">Submit</button>
+    </form>
+    {%if error%}
+    <p>{{error}}</p>
+    {% endif %}
+    
+    
+</body>
+</html>

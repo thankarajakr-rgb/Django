@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<title>Update Student</title>
+
+</head>
+
+<body>
+
+<h1>Update Student</h1>
+
+<form method="POST">
+{% csrf_token %}
+ <label>Name</label>
+ <input type="text" name="name" value="{{ student.name }}" required>
+<br><br>
+<label>Age</label>
+<input type="number" name="age" value="{{ student.age }}" required>
+<br><br>
+<label>Course</label>
+ <select name="course" required>
+{% for course in courses %}
+<option value="{{ course.id }}"{% if course.id == student.course.id %}selected {% endif %}>
+{{ course.course_name }}
+ </option>
+ {% endfor %}
+</select>
+<br><br>
+<button type="submit"> Update</button>
+</form>
+<br>
+<a href="/student/">Back to Students</a>
+</body>
+</html>

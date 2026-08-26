@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Table</title>
+</head>
+
+<body>
+
+<nav>
+    <a href="/">Home</a>
+    <a href="/index/">Index</a>
+    <a href="/about/">About</a>
+    <a href="/table/">Table</a>
+    <a href="/student/">Students</a>
+    <a href="/course/">Courses</a>
+</nav>
+
+<h1>Student Table</h1>
+
+<table border="1">
+<thead>
+<tr>
+     <th>ID</th>
+    <th>Name</th>
+    <th>Age</th>
+ </tr>
+ </thead>
+ <tbody>
+{% for i in student %}
+<tr>
+<td>{{ i.id }}</td>
+<td>{{ i.name }}</td>
+<td>{{ i.age }}</td>
+</tr>
+{% endfor %}
+</tbody>
+</table>
+</body>
+</html>
